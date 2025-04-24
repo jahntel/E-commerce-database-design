@@ -1,0 +1,108 @@
+/*Tables and Attributes*/
+
+- product_image- image_id (Primary Key)
+- product_id (Foreign Key referencing product)
+- image_url
+
+- color- color_id (Primary Key)
+- color_name
+
+- product_category- category_id (Primary Key)
+- category_name
+
+- product- product_id (Primary Key)
+- product_name
+- brand_id (Foreign Key referencing brand)
+- base_price
+- category_id (Foreign Key referencing product_category)
+
+- product_item- item_id (Primary Key)
+- product_id (Foreign Key referencing product)
+- variation_id (Foreign Key referencing product_variation)
+
+- brand- brand_id (Primary Key)
+- brand_name
+
+- product_variation- variation_id (Primary Key)
+- product_id (Foreign Key referencing product)
+- color_id (Foreign Key referencing color)
+- size_option_id (Foreign Key referencing size_option)
+
+- size_category- size_category_id (Primary Key)
+- size_category_name
+
+- size_option- size_option_id (Primary Key)
+- size_value
+- size_category_id (Foreign Key referencing size_category)
+
+- product_attribute- attribute_id (Primary Key)
+- attribute_name
+- attribute_value
+- product_id (Foreign Key referencing product)
+- attribute_type_id (Foreign Key referencing attribute_type)
+
+- attribute_category- attribute_category_id (Primary Key)
+- category_name
+
+- attribute_type- attribute_type_id (Primary Key)
+- type_name
+- attribute_category_id (Foreign Key referencing attribute_category)
+
+
+
+/* Relationships */ 
+
+- One-to-Many Relationships:- A product_category can have multiple products.
+- A product can have multiple product_items and product_variations.
+- A size_category can have multiple size_options.
+
+- Many-to-One Relationships:- Each product_item belongs to one product_variation.
+- Each product_variation links a single product, color, and size_option.
+
+/* Data flow*/
+Product Setup by Admin
+- Admin uploads the product details to the product table, including:- product_name, brand_id, category_id, and base_price.
+
+- Admin uploads image files or URLs to the product_image table linked to product_id.
+- Admin assigns each product a category (product_category) and variations (product_variation table), such as size (size_option) and color (color).
+
+
+Product Attributes Definition
+- Admin creates custom attributes (e.g., material, weight) in the product_attribute table, linked to product_id.
+- Attributes are grouped by category (attribute_category) and type (attribute_type) for ease of classification.
+
+
+Customer Interaction with Products
+- Browsing: Customers explore products by filtering them using the product_category, color, and size_option tables.
+- Viewing Details: Once a product is selected, additional details like attributes, images, and available variations (size, color) are dynamically fetched from product_attribute, product_image, and product_variation.
+
+
+Purchasing Workflow
+- Customers select specific product items (product_item) based on chosen variations.
+- Data flow from product_item ensures accurate pricing and inventory checks before purchase confirmation.
+
+
+Seamless Integration of Entities
+- Relationships: Primary keys and foreign keys in tables like product, product_variation, size_option, color, and brand ensure smooth data linking.
+- Data Retrieval: Queries dynamically fetch interconnected data (e.g., product details with attributes, images, and variations).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
