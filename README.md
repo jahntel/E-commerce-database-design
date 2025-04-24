@@ -78,12 +78,12 @@ The database structure is visualized in the Entity-Relationship Diagram. The ERD
 
    *(Adjust the command based on your specific database system)*
 
-4. **Run the test script:** Execute the `ecommerce_sql_test.sql` script to insert sample data and run test queries.
+4. **Run the test script:** Execute the `test.sql` script to insert sample data and run test queries.
 
    ```bash
-   mysql -u your_username -p ecomercedb < ecommerce_sql_test.sql
+   mysql -u your_username -p ecomercedb < test.sql
    # Or for PostgreSQL:
-   # psql -U your_username -d ecomercedb -f ecommerce_sql_test.sql
+   # psql -U your_username -d ecomercedb -f test.sql
 
    ```
 
