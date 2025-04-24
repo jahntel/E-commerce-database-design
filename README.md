@@ -49,107 +49,7 @@ The database is named `ecomercedb` and includes the following tables:
 ## 📊 Entity-Relationship Diagram (ERD)
 
 The database structure is visualized in the Entity-Relationship Diagram. The ERD shows the entities, their attributes, and the relationships between them.
-
-*(You can either include an image of your ERD here or include the Mermaid code directly if your platform supports rendering it.)*
-
-```mermaid
-erDiagram
-    brand {
-        INT brand_id PK
-        VARCHAR brand_name
-    }
-
-    product_category {
-        INT category_id PK
-        VARCHAR category_name
-        INT parent_category_id FK "Optional self-referencing for subcategories"
-    }
-
-    product {
-        INT product_id PK
-        VARCHAR product_name
-        DECIMAL base_price
-        INT brand_id FK
-        INT category_id FK
-        TEXT description
-    }
-
-    product_image {
-        INT image_id PK
-        INT product_id FK
-        VARCHAR image_url
-        BOOLEAN is_main_image
-    }
-
-    product_item {
-        INT product_item_id PK
-        INT product_id FK
-        DECIMAL price
-        INT quantity_in_stock
-        VARCHAR sku
-    }
-
-    color {
-        INT color_id PK
-        VARCHAR color_name
-        VARCHAR hex_code
-    }
-
-    size_category {
-        INT size_category_id PK
-        VARCHAR category_name "e.g., Clothing, Shoe"
-    }
-
-    size_option {
-        INT size_option_id PK
-        INT size_category_id FK
-        VARCHAR size_value "e.g., S, M, L, 42"
-    }
-
-    product_variation {
-        INT product_variation_id PK
-        INT product_item_id FK
-        INT color_id FK "Optional, if color is a variation"
-        INT size_option_id FK "Optional, if size is a variation"
-    }
-
-    attribute_type {
-        INT attribute_type_id PK
-        VARCHAR type_name "e.g., text, number, boolean"
-    }
-
-    attribute_category {
-        INT attribute_category_id PK
-        VARCHAR category_name "e.g., Physical, Technical"
-    }
-
-    product_attribute {
-        INT product_attribute_id PK
-        INT product_id FK
-        INT attribute_category_id FK
-        INT attribute_type_id FK
-        VARCHAR attribute_name
-        VARCHAR attribute_value "Stores the value based on type"
-    }
-
-    brand ||--|{ product : "has"
-    product_category ||--|{ product : "categorizes"
-    product ||--|{ product_image : "has"
-    product ||--|{ product_item : "has"
-    product_item ||--|{ product_variation : "can have"
-
-    product_category ||--o{ product_category : "can have parent"
-
-    color ||--o{ product_variation : "is variation of"
-    size_option ||--o{ product_variation : "is variation of"
-    size_category ||--|{ size_option : "groups"
-
-    attribute_type ||--|{ product_attribute : "defines type of"
-    attribute_category ||--|{ product_attribute : "categorizes"
-    product ||--|{ product_attribute : "has"
-
-```
-*(Replace the above Mermaid code block with an image reference if you prefer)*
+(GroupEcomerce.drawio)
 
 ## 🚀 Setup and Usage
 
@@ -189,7 +89,7 @@ erDiagram
 
 ## 🧪 Testing
 
-The `ecommerce_sql_test.sql` file contains SQL commands to:
+The `test.sql` file contains SQL commands to:
 
 * Insert sample data into all tables.
 
