@@ -127,3 +127,18 @@ SELECT
     pc2.category_name AS parent_category
 FROM product_category pc1
 LEFT JOIN product_category pc2 ON pc1.parent_category_id = pc2.category_id;
+
+--update price of a product
+UPDATE product
+SET base_price = 4500
+WHERE product_id = 1;
+
+--modify name of a product
+UPDATE brand
+SET brand_name = 'Adidas'
+WHERE brand_id = 1;
+
+--retrieve products with attributes
+SELECT p.product_name, pa.attribute_name, pa.attribute_value
+FROM product_attribute pa
+INNER JOIN product p ON pa.product_id = p.product_id;
